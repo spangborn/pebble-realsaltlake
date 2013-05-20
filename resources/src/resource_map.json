@@ -1,6 +1,11 @@
 {
     "media": [
         {
+            "defName": "MENU_ICON_REALSALTLAKE",
+            "type": "png",
+            "file": "images/menu_icon_realsaltlake.png"
+        },
+        {
             "trackingAdjust": 5,
             "characterRegex": "[#apsaltlaketilidie]",
             "defName": "FONT_ROTHWELL_SUBSET_30",

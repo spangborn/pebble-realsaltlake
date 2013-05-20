@@ -7,7 +7,7 @@
 PBL_APP_INFO(MY_UUID,
              "Real Salt Lake", "Anesti Creative",
              1, 0, /* App version */
-             DEFAULT_MENU_ICON,
+             RESOURCE_ID_MENU_ICON_REALSALTLAKE,
              APP_INFO_WATCH_FACE);
 
 // App-specific data
@@ -31,9 +31,9 @@ void update_display(PblTm *tick_time) {
 
   // Kludge to handle lack of non-padded hour format string
   // for twelve hour clock.
-  if (!clock_is_24h_style() && (time_text[0] == '0')) {
+  /*if (!clock_is_24h_style() && (time_text[0] == '0')) {
     memmove(time_text, &time_text[1], sizeof(time_text) - 1);
-  }
+  }*/
 
   text_layer_set_text(&timeLayer, time_text);
 
@@ -58,11 +58,12 @@ void handle_init(AppContextRef ctx) {
 	bmp_init_container(RESOURCE_ID_RSL_BACKGROUND, &background_image);
 	layer_add_child(&window.layer, &background_image.layer.layer);
 	
-	text_layer_init(&timeLayer, GRect(29, 54, 144-40 /* width */, 168-54 /* height */));
+	text_layer_init(&timeLayer, GRect(30, 11, 89 /* width */, 30 /* height */));
 	text_layer_set_text_color(&timeLayer, GColorWhite);
 	text_layer_set_background_color(&timeLayer, GColorClear);
 	text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROTHWELL_SUBSET_48)));
-
+	layer_add_child(&window.layer, &timeLayer.layer);
+	
 	PblTm tick_time;
 	get_time(&tick_time);
 	update_display(&tick_time);
