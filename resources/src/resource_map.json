@@ -1,9 +1,23 @@
 {
     "media": [
         {
-            "defName": "DUMMY",
-            "type": "raw",
-            "file": "resource_map.json"
+            "trackingAdjust": 5,
+            "characterRegex": "[#apsaltlaketilidie]",
+            "defName": "FONT_ROTHWELL_SUBSET_30",
+            "type": "font",
+            "file": "fonts/ROTHWELL.TTF"
+        },
+        {
+            "trackingAdjust": 5,
+            "characterRegex": "[0-9:]",
+            "defName": "FONT_ROTHWELL_SUBSET_48",
+            "type": "font",
+            "file": "fonts/ROTHWELL.TTF"
+        },
+        {
+            "defName": "RSL_BACKGROUND",
+            "type": "png",
+            "file": "images/RSL_pebble.png"
         }
     ],
     "friendlyVersion": "VERSION",
