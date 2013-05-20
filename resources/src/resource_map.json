@@ -7,15 +7,14 @@
         },
         {
             "trackingAdjust": 5,
-            "characterRegex": "[#apsaltlaketilidie]",
+            "characterRegex": "[#APsaltlaketilidie]",
             "defName": "FONT_ROTHWELL_SUBSET_30",
             "type": "font",
             "file": "fonts/ROTHWELL.TTF"
         },
         {
-            "trackingAdjust": 5,
             "characterRegex": "[0-9:]",
-            "defName": "FONT_ROTHWELL_SUBSET_48",
+            "defName": "FONT_ROTHWELL_SUBSET_42",
             "type": "font",
             "file": "fonts/ROTHWELL.TTF"
         },

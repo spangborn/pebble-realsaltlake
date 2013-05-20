@@ -13,11 +13,14 @@ PBL_APP_INFO(MY_UUID,
 // App-specific data
 Window window; // All apps must have at least one window
 TextLayer timeLayer; // The clock
+TextLayer am_pmLayer; // AM/PM
 BmpContainer background_image;
 
 void update_display(PblTm *tick_time) {
 
   	static char time_text[] = "00:00"; // Needs to be static because it's used by the system later.
+	static char ampm_text[] = " ";
+	
 	char *time_format;
 
 	if (clock_is_24h_style()) {
@@ -26,17 +29,11 @@ void update_display(PblTm *tick_time) {
 	    time_format = "%I:%M";
     }
 
+  	string_format_time(time_text, sizeof(time_text), time_format, tick_time);
+	string_format_time(ampm_text, sizeof(ampm_text), "%p", tick_time);
 
-  string_format_time(time_text, sizeof(time_text), time_format, tick_time);
-
-  // Kludge to handle lack of non-padded hour format string
-  // for twelve hour clock.
-  /*if (!clock_is_24h_style() && (time_text[0] == '0')) {
-    memmove(time_text, &time_text[1], sizeof(time_text) - 1);
-  }*/
-
-  text_layer_set_text(&timeLayer, time_text);
-
+	text_layer_set_text(&timeLayer, time_text);
+	text_layer_set_text(&am_pmLayer, ampm_text);
 }
 
 void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t) {
@@ -58,11 +55,19 @@ void handle_init(AppContextRef ctx) {
 	bmp_init_container(RESOURCE_ID_RSL_BACKGROUND, &background_image);
 	layer_add_child(&window.layer, &background_image.layer.layer);
 	
-	text_layer_init(&timeLayer, GRect(30, 11, 89 /* width */, 30 /* height */));
+	text_layer_init(&timeLayer, window.layer.frame);
 	text_layer_set_text_color(&timeLayer, GColorWhite);
 	text_layer_set_background_color(&timeLayer, GColorClear);
-	text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROTHWELL_SUBSET_48)));
+	text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROTHWELL_SUBSET_42)));
+	layer_set_frame(&timeLayer.layer, GRect(30, 0, 110 /* width */, 50 /* height */));
 	layer_add_child(&window.layer, &timeLayer.layer);
+	
+	text_layer_init(&am_pmLayer, window.layer.frame);
+	text_layer_set_text_color(&am_pmLayer, GColorWhite);
+	text_layer_set_background_color(&am_pmLayer, GColorClear);
+	text_layer_set_font(&am_pmLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROTHWELL_SUBSET_30)));	
+	layer_set_frame(&am_pmLayer.layer, GRect(103, 10, 40 /* width */, 30 /* height */));
+	layer_add_child(&window.layer, &am_pmLayer.layer);
 	
 	PblTm tick_time;
 	get_time(&tick_time);
