@@ -1,36 +1,37 @@
 {
-  "uuid": "1ee83605-48b5-429f-a7e9-6b18766c1dfc",
-  "shortName": "RSL",
-  "longName": "Real Salt Lake",
-  "companyName": "Sawyer Pangborn",
-  "versionCode": 2,
-  "versionLabel": "2.0.0",
-  "watchapp": {
-    "watchface": true
-  },
-  "resources": {
-    "media": [
-       {
-       		"menuIcon" : true,
-            "name": "MENU_ICON_REALSALTLAKE",
-            "type": "png",
-            "file": "images/menu_icon_realsaltlake.png"
-        },
-        {
-            "name": "FONT_ROTHWELL_SUBSET_30",
-            "type": "font",
-            "file": "fonts/ROTHWELL.TTF"
-        },
-        {
-            "name": "FONT_ROTHWELL_SUBSET_42",
-            "type": "font",
-            "file": "fonts/ROTHWELL.TTF"
-        },
-        {
-            "name": "RSL_BACKGROUND",
-            "type": "png",
-            "file": "images/RSL_pebble.png"
-        }
-    ]
-  }
+    "versionLabel": "2.0.0",
+    "uuid": "45ffb367-0c5a-47ab-96f5-f3aae2028d77",
+    "appKeys": {},
+    "longName": "Real Salt Lake",
+    "versionCode": 1,
+    "shortName": "RSLTID",
+    "companyName": "spangborn",
+    "watchapp": {
+        "watchface": true
+    },
+    "resources": {
+        "media": [
+            {
+                "type": "png",
+                "name": "RSL_BACKGROUND",
+                "file": "images/RSL_pebble.png"
+            },
+            {
+                "type": "font",
+                "name": "FONT_ROTHWELL_SUBSET_42",
+                "file": "fonts/ROTHWELL.TTF"
+            },
+            {
+                "type": "font",
+                "name": "FONT_ROTHWELL_SUBSET_30",
+                "file": "fonts/ROTHWELL.TTF"
+            },
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "MENU_ICON_REALSALTLAKE",
+                "file": "images/menu_icon_realsaltlake.png"
+            }
+        ]
+    }
 }
