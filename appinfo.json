@@ -11,6 +11,7 @@
   "resources": {
     "media": [
        {
+       		"menuIcon" : true,
             "name": "MENU_ICON_REALSALTLAKE",
             "type": "png",
             "file": "images/menu_icon_realsaltlake.png"
